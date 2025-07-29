@@ -19,3 +19,54 @@ target
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# Ignorar diretórios de build do Rust
+/target/
+
+# Ignorar arquivos de cache do Cargo
+**/*.rs.bk
+**/*.rlib
+**/*.rmeta
+Cargo.lock # Geralmente não é ignorado em projetos Rust, mas se você tiver problemas de lockfile em CI/CD, pode considerar.
+           # Para a maioria dos projetos, é bom versionar o Cargo.lock.
+
+# Ignorar arquivos de ambiente (segredos)
+.env
+.env.*
+!.env.example # Não ignore o template de exemplo
+
+# Ignorar arquivos de IDEs e editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.DS_Store # macOS
+Thumbs.db # Windows
+
+# Ignorar arquivos de sistema operacional
+*.log
+*.tmp
+*.swp
+*~
+
+# Ignorar arquivos específicos do Trunk/WASM
+/dist/ # Diretório de saída do Trunk
+/wasm/ # Se houver um diretório wasm separado
+
+# Ignorar arquivos de banco de dados (se for local e não versionado)
+*.db
+*.sqlite
+/migrations/*.sqlite # Se você tiver arquivos sqlite gerados por migrações
+
+# Ignorar arquivos de pacotes Node.js (se usar npm/yarn para frontend)
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Ignorar arquivos de containers (se usar Docker/Podman)
+*.dockerignore
+.dockerignore
+Dockerfile.bak
+docker-compose.override.yml # Se você tiver overrides locais
